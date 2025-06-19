@@ -1,0 +1,22 @@
+name: chucker
+description: "A Chucker - like HTTP logger for Flutter using Dio, GetIt, and local notifications."
+version: 0.0.1
+repository: https://github.com/EngGemy95/chucker
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_local_notifications: ^19.2.1
+  get_it: ^8.0.3
+  dio: ^5.8.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
