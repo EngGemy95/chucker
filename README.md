@@ -1,39 +1,109 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# chucker_flutter
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A lightweight Chucker-like HTTP inspector for Flutter using Dio, GetIt, and flutter_local_notifications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+This package helps developers monitor and debug network requests in real-time within their apps.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+---
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- ✅ Logs all HTTP requests/responses using Dio interceptor
+- ✅ View full request/response details (headers, body, status, duration)
+- ✅ Show local notifications for each request
+- ✅ Uses GetIt for dependency injection
+- ✅ Built with clean architecture
+- ✅ Easy integration with plug-and-play setup
 
-## Getting started
+---
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Installation
 
-## Usage
+Add to your `pubspec.yaml`:
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  chucker_flutter:
+    git:
+      url: https://github.com/mohamedgamal95/chucker_flutter.git
 ```
 
-## Additional information
+Make sure your project also includes these dependencies:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```yaml
+dependencies:
+  dio: ^5.8.0+1
+  get_it: ^8.0.3
+  flutter_local_notifications: ^19.2.1
+```
+
+---
+
+## 🚀 Getting Started
+
+### Initialize Chucker in `main.dart`
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initChuckerFlutter(); // setup Dio, GetIt, notifications
+  runApp(MyApp());
+}
+```
+
+---
+
+### Use Dio (already configured via GetIt)
+
+```dart
+import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
+
+final dio = GetIt.I<Dio>();
+
+void fetchData() async {
+  final response = await dio.get('https://jsonplaceholder.typicode.com/posts/1');
+  print(response.data);
+}
+```
+
+---
+
+### Show logs screen anywhere in your app
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
+void showLogsPage() async {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const LogsPage()),
+  );
+}
+```
+
+## Author
+
+Developed with by [Mohamed Gamal](https://mohamedgamalfayed.vercel.app)
+
+---
+
+## License
+
+This project is licensed under the MIT License.  
+See [LICENSE](LICENSE) for full details.
+
+---
+
+## Acknowledgements
+
+This package uses and respects the following awesome packages:
+
+- [`dio`](https://pub.dev/packages/dio) – Powerful HTTP client publish by flutter.cn
+- [`flutter_local_notifications`](https://pub.dev/packages/flutter_local_notifications) – Local notification system by Michael Bui & publish by dexterx.dev
+- [`get_it`](https://pub.dev/packages/get_it) – Dependency injection publish by fluttercommunity.dev
+
+Make sure to read and comply with their licenses if you plan to redistribute or modify this package.
