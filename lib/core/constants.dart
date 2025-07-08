@@ -1,3 +1,3 @@
 class Constants {
-  static String logs = 'open-logs';
+  static String logs = 'open_logs';
 }

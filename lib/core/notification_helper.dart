@@ -18,7 +18,7 @@ class NotificationHelper {
         final payload = response.payload;
         if (payload != null) {
           switch (payload) {
-            case 'open-logs':
+            case 'open_logs':
               navigatorKey.currentState?.push(
                 MaterialPageRoute(builder: (_) => const LogsPage()),
               );
