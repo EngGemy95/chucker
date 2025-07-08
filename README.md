@@ -17,28 +17,6 @@ This package helps developers monitor and debug network requests in real-time wi
 
 ---
 
-## Installation
-
-Add to your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  chucker_flutter:
-    git:
-      url: https://github.com/mohamedgamal95/chucker_flutter.git
-```
-
-Make sure your project also includes these dependencies:
-
-```yaml
-dependencies:
-  dio: ^5.8.0+1
-  get_it: ^8.0.3
-  flutter_local_notifications: ^19.2.1
-```
-
----
-
 ## 🚀 Getting Started
 
 ### Initialize Chucker in `main.dart`
