@@ -1,3 +1,4 @@
+import 'package:chucker/core/constants.dart';
 import 'package:dio/dio.dart';
 import '../data/models/logged_request.dart';
 import '../domain/chucker_logger.dart';
@@ -24,27 +25,47 @@ class LoggerInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    final log = logger.logs.first;
+    final startTime = response.requestOptions.extra['start_time'];
+    final log = logger.logs.firstWhere(
+          (l) => l.time == startTime,
+      orElse: () => LoggedRequest(
+        method: response.requestOptions.method,
+        path: response.requestOptions.uri.toString(),
+        headers: {},
+        requestBody: null,
+        time: DateTime.now(),
+      ),
+    );
+
     log.statusCode = response.statusCode;
     log.responseBody = response.data;
     log.duration = DateTime.now().difference(log.time);
     NotificationHelper.show(
-      "${log.method} ${log.statusCode}",
-      log.path,
-    );
+        "${log.method} ${log.statusCode}", log.path, Constants.logs);
+
     super.onResponse(response, handler);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    final log = logger.logs.first;
+    final startTime = err.requestOptions.extra['start_time'];
+    final log = logger.logs.firstWhere(
+          (l) => l.time == startTime,
+      orElse: () => LoggedRequest(
+        method: err.requestOptions.method,
+        path: err.requestOptions.uri.toString(),
+        headers: {},
+        requestBody: null,
+        time: DateTime.now(),
+      ),
+    );
+
     log.statusCode = err.response?.statusCode ?? -1;
     log.responseBody = err.response?.data ?? err.message;
     log.duration = DateTime.now().difference(log.time);
     NotificationHelper.show(
-      "${log.method} ${log.statusCode} (Error)",
-      log.path,
-    );
+        "${log.method} ${log.statusCode} (Error)", log.path, Constants.logs);
+
     super.onError(err, handler);
   }
 }

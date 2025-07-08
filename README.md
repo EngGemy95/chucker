@@ -85,6 +85,33 @@ void showLogsPage() async {
 }
 ```
 
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:chucker_flutter/chucker_flutter.dart';
+void showLogsDetailsPage() async {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const LogDetailPage()),
+  );
+}
+```
+
+## Do not forget to call it in main method
+```dart
+final sl = GetIt.instance;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initChuckerFlutter(sl);
+
+  // If you already have a Dio, attach the logger manually
+  // dio.interceptors.add(LoggerInterceptor(sl<ChuckerLogger>()));
+  
+  runApp(MyApp());
+}
+```
+
+
 ## Author
 
 Developed with by [Mohamed Gamal](https://mohamedgamalfayed.vercel.app)

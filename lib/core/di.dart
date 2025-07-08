@@ -5,9 +5,9 @@ import '../data/logger_interceptor.dart';
 import '../domain/chucker_logger.dart';
 import 'notification_helper.dart';
 
-final sl = GetIt.instance;
+// final sl = GetIt.instance;
 
-Future<void> initChuckerFlutter() async {
+Future<void> initChuckerFlutter(GetIt sl) async {
   sl.registerLazySingleton(() => ChuckerLogger());
 
   sl.registerLazySingleton(() => Dio()

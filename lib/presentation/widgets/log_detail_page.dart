@@ -25,7 +25,8 @@ class LogDetailPage extends StatelessWidget {
             Text(jsonEncode(log.requestBody)),
             const Divider(),
             const Text('Response Body:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(jsonEncode(log.responseBody)),
+            // Text(jsonEncode(log.responseBody)),
+            SelectableText(const JsonEncoder.withIndent('  ').convert(log.responseBody))
           ],
         ),
       ),
