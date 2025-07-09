@@ -37,6 +37,19 @@ void main() async {
 }
 ```
 
+## Do not forget to put the navigatorKey in your material app to handle press on notification
+## The navigatorKey exist in the package inside NavigationService class
+
+```dart
+void MaterialWidget(Widget child) {
+  return MaterialApp(
+    navigatorKey: NavigationService.navigatorKey,
+    title: 'Your App',
+    home: child,
+  );
+}
+```
+
 ---
 
 ### Use Dio (already configured via GetIt)
