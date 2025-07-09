@@ -31,11 +31,18 @@ void main() async {
   await initChuckerFlutter(sl);
 
   // If you already have a Dio, attach the logger manually
-  // dio.interceptors.add(LoggerInterceptor(sl<ChuckerLogger>()));
+   dio.interceptors.add(LoggerInterceptor(sl<ChuckerLogger>()));
 
   runApp(MyApp());
+  
+  //Ensure navigation happens AFTER the app has started
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    NotificationHelper.handleInitialNotification();
+  });
+  
 }
 ```
+
 
 ## Do not forget to put the navigatorKey in your material app to handle press on notification
 ## The navigatorKey exist in the package inside NavigationService class
@@ -49,8 +56,6 @@ void MaterialWidget(Widget child) {
   );
 }
 ```
-
----
 
 ### Use Dio (already configured via GetIt)
 
