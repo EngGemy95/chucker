@@ -17,6 +17,16 @@ This package helps developers monitor and debug network requests in real-time wi
 
 ---
 
+## 📸 Screenshots
+
+Here’s how the log viewer looks in action:
+
+![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image1.jpg)
+![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image2.jpg)
+![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image3.jpg)
+
+
+
 ## 🚀 Getting Started
 
 ### Initialize Chucker in `main.dart`
