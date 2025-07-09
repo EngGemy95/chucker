@@ -1,4 +1,3 @@
-import 'package:chucker/core/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -6,7 +5,6 @@ import '../presentation/pages/logs_page.dart';
 import 'navigation_service.dart';
 
 class NotificationHelper {
-  static String? _pendingPayload;
   static final _plugin = FlutterLocalNotificationsPlugin();
 
   static Future<void> init() async {
@@ -16,38 +14,18 @@ class NotificationHelper {
     await _plugin.initialize(
       initSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        _pendingPayload = response.payload;
-        //final payload = response.payload;
-        // if (payload != null) {
-        //   switch (payload) {
-        //     case 'open_logs':
-        //       NavigationService.navigatorKey.currentState?.push(
-        //         MaterialPageRoute(builder: (_) => const LogsPage()),
-        //       );
-        //       break;
-        //   }
-        // }
+        final payload = response.payload;
+        if (payload != null) {
+          switch (payload) {
+            case 'open_logs':
+              NavigationService.navigatorKey.currentState?.push(
+                MaterialPageRoute(builder: (_) => const LogsPage()),
+              );
+              break;
+          }
+        }
       },
     );
-  }
-  // Called in main() after runApp()
-  static void handleInitialNotification() {
-    if (_pendingPayload == Constants.logs) {
-      _navigateToLogs();
-      _pendingPayload = null;
-    }
-  }
-
-  static void _navigateToLogs() {
-    final context = NavigationService.navigatorKey.currentContext;
-    if (context != null) {
-      NavigationService.navigatorKey.currentState?.push(
-        MaterialPageRoute(builder: (_) => const LogsPage()),
-      );
-    } else {
-      // Try again after a short delay if context isn't ready
-      Future.delayed(const Duration(milliseconds: 500), _navigateToLogs);
-    }
   }
 
   static Future<void> show(String title, String body, String payload) async {
