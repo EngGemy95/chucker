@@ -21,9 +21,9 @@ This package helps developers monitor and debug network requests in real-time wi
 
 Here’s how the log viewer looks in action:
 
-![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image1.jpg)
-![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image2.jpg)
-![image_preview](https://github.com/EngGemy95/chucker/blob/master/assets/image3.jpg)
+![image_preview](https://raw.githubusercontent.com/EngGemy95/chucker/refs/heads/master/assets/image1.jpg?token=GHSAT0AAAAAADG76NCNNMLI67H4PAUU3TKA2DOMFRQ)
+![image_preview](https://raw.githubusercontent.com/EngGemy95/chucker/refs/heads/master/assets/image2.jpg?token=GHSAT0AAAAAADG76NCMRWT3QX3IVTLLDSPG2DOMF6A)
+![image_preview](https://raw.githubusercontent.com/EngGemy95/chucker/refs/heads/master/assets/image3.jpg?token=GHSAT0AAAAAADG76NCMRA5VXBLQROVJD7UW2DOMGGQ)
 
 
 
