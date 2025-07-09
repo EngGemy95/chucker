@@ -25,9 +25,14 @@ This package helps developers monitor and debug network requests in real-time wi
 import 'package:flutter/material.dart';
 import 'package:chucker_flutter/chucker_flutter.dart';
 
+final sl = GetIt.instance;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initChuckerFlutter(); // setup Dio, GetIt, notifications
+  await initChuckerFlutter(sl);
+
+  // If you already have a Dio, attach the logger manually
+  // dio.interceptors.add(LoggerInterceptor(sl<ChuckerLogger>()));
+
   runApp(MyApp());
 }
 ```
@@ -67,28 +72,13 @@ void showLogsPage() async {
 ```dart
 import 'package:flutter/material.dart';
 import 'package:chucker_flutter/chucker_flutter.dart';
-void showLogsDetailsPage() async {
+void showLogsDetailsPage(LoggedRequest log) async {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => const LogDetailPage()),
+    MaterialPageRoute(builder: (_) => const LogDetailPage(log)),
   );
 }
 ```
-
-## Do not forget to call it in main method
-```dart
-final sl = GetIt.instance;
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initChuckerFlutter(sl);
-
-  // If you already have a Dio, attach the logger manually
-  // dio.interceptors.add(LoggerInterceptor(sl<ChuckerLogger>()));
-  
-  runApp(MyApp());
-}
-```
-
 
 ## Author
 
