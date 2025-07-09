@@ -1,6 +1,6 @@
 name: chucker
 description: "A Chucker - like HTTP logger for Flutter using Dio, GetIt, and local notifications."
-version: 0.0.5
+version: 0.0.6
 repository: https://github.com/EngGemy95/chucker
 
 environment:
