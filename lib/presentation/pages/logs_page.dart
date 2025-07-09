@@ -100,39 +100,3 @@ class _LogsPageState extends State<LogsPage> {
     );
   }
 }
-
-
-// class _LogsPageState extends State<LogsPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final logs = sl<ChuckerLogger>().logs;
-//
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Chucker Logs'), actions: [
-//         IconButton(
-//           icon: Icon(Icons.delete),
-//           onPressed: () {
-//             sl<ChuckerLogger>().clear();
-//             (context as Element).markNeedsBuild();
-//           },
-//         ),
-//       ]),
-//       body: ListView.builder(
-//         itemCount: logs.length,
-//         itemBuilder: (_, index) {
-//           final log = logs[index];
-//           return ListTile(
-//             title: Text('${log.method} ${log.path}'),
-//             subtitle: Text(
-//               '${log.statusCode ?? 'Pending'} • ${log.duration?.inMilliseconds ?? 0} ms',
-//             ),
-//             onTap: () => Navigator.push(
-//               context,
-//               MaterialPageRoute(builder: (_) => LogDetailPage(log)),
-//             ),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }

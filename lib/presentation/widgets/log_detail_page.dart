@@ -15,18 +15,24 @@ class LogDetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            Text('Status: ${log.statusCode}', style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text('Status: ${log.statusCode}',
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             Text('Duration: ${log.duration?.inMilliseconds ?? '-'} ms'),
             const Divider(),
-            const Text('Request Headers:', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text('Request Headers:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
             Text(jsonEncode(log.headers)),
             const Divider(),
-            const Text('Request Body:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(jsonEncode(log.requestBody)),
+            const Text('Request Body:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            SelectableText(
+                const JsonEncoder.withIndent('  ').convert(log.requestBody)),
             const Divider(),
-            const Text('Response Body:', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text('Response Body:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
             // Text(jsonEncode(log.responseBody)),
-            SelectableText(const JsonEncoder.withIndent('  ').convert(log.responseBody))
+            SelectableText(
+                const JsonEncoder.withIndent('  ').convert(log.responseBody))
           ],
         ),
       ),
